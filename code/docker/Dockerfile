@@ -1,15 +1,15 @@
-# Pick a matching runtime (example: CUDA 12, Ubuntu 22.04)
-FROM nvidia/cuda:12.6.1-cudnn-runtime-ubuntu22.04
+FROM python:3.11-slim
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    python3 python3-venv python3-pip libgomp1 \
-    cuda-command-line-tools-12-6 \
- && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y --no-install-recommends libgomp1 && \
+    rm -rf /var/lib/apt/lists/*
 
 ENV VIRTUAL_ENV=/opt/venv
-RUN python3 -m venv $VIRTUAL_ENV
+RUN python -m venv $VIRTUAL_ENV
 ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
-# Use the *local* variant to match system CUDA:
-RUN pip install --no-cache-dir -U pip \
- && pip install --no-cache-dir -U  "numpy>2" matplotlib "jax[cuda12-local]" jax-cfd[complete]  optax
+# Install JAX with bundled CUDA/cuDNN, plus your deps
+RUN pip install -U pip && \
+    pip install -U "jax[cuda12]" jax-cfd optax matplotlib numpy
+
+# Optional: sanity check
+# RUN python - <<'PY'\nimport jax; print(jax.devices())\nPY
