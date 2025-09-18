@@ -27,4 +27,4 @@ jobs:
         with:
           context: "{{defaultContext}}:code/docker"
           push: true
-          tags: dimmestp/multi_node_pytorch:latest
+          tags: zhulu24/jax_image_eidf:latest
