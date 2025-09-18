@@ -11,4 +11,5 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Use the *local* variant to match system CUDA:
 RUN pip install --no-cache-dir -U pip \
- && pip install --no-cache-dir -U  "numpy>2" matplotlib "jax[cuda12-local]" jax-cfd[complete] optax
+ && pip install --no-cache-dir -U  "numpy>2" matplotlib "jax[cuda12-local]" jax-cfd[complete] 
+ && pip install --no-cache-dir -U  optax
