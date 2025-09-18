@@ -3,6 +3,7 @@ FROM nvidia/cuda:12.6.1-cudnn-runtime-ubuntu22.04
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     python3 python3-venv python3-pip libgomp1 \
+    cuda-command-line-tools-12-6 \
  && rm -rf /var/lib/apt/lists/*
 
 ENV VIRTUAL_ENV=/opt/venv
