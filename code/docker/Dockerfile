@@ -9,7 +9,7 @@ ENV PATH="$VIRTUAL_ENV/bin:$PATH"
 
 # Install JAX with bundled CUDA/cuDNN, plus your deps
 RUN pip install -U pip && \
-    pip install -U "jax[cuda12]" jax-cfd optax matplotlib numpy
+    pip install -U "jax[cuda12]" jax-cfd[completed] optax matplotlib numpy
 
 # Optional: sanity check
 # RUN python - <<'PY'\nimport jax; print(jax.devices())\nPY
