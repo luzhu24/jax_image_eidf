@@ -14,7 +14,7 @@ ENV TF_FORCE_GPU_ALLOW_GROWTH=true \
 
 # Install JAX with bundled CUDA/cuDNN, plus your deps
 RUN pip install -U pip && \
-    pip install -U "tensorflow[and-cuda]" "jax[cuda12]" jax-cfd[complete] optax matplotlib numpy seaborn
+    pip install -U "tensorflow[and-cuda]" "jax[cuda12]" jax-cfd[complete] optax matplotlib numpy seaborn pyyaml
 
 # Optional: sanity check
 # RUN python - <<'PY'\nimport jax; print(jax.devices())\nPY
